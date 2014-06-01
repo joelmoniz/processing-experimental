@@ -803,7 +803,7 @@ public class ASTGenerator {
     predictionOngoing.set(true);
     // This method is called from TextArea.fetchPhrase, which is called via a SwingWorker instance
     // in TextArea.processKeyEvent
-    if(caretWithinLineComment()){
+    if(caretWithinLineComment() || caretWithinMultiLineComment()){
       log("No predictions.");
       predictionOngoing.set(false);
       return;
@@ -2849,6 +2849,25 @@ public class ASTGenerator {
     }
     log("not within comment");
     return false;
+  }
+  
+  protected boolean caretWithinMultiLineComment(){
+//	    String pdeLine = editor.getLineText(editor.textArea().getCaretLine()).trim();
+//	    int caretPos = editor.textArea().getCaretPosition()
+//	        - editor.textArea()
+//	            .getLineStartNonWhiteSpaceOffset(editor.textArea().getCaretLine());
+//	      
+//	    for (int x = pdeLine.indexOf("/*") ; x >= 0 ; x = pdeLine.indexOf("/*", x+1)) {
+//	      log(x + " , " + caretPos + ", Checking line for multiline comment within" +
+//	            "present line" + pdeLine);
+//	    	if (caretPos > x && pdeLine.indexOf("*/",x) > caretPos) {
+//	    	  log("INSIDE a multiline comment");
+//	          return true;
+//	      }
+//	    }  
+	
+	log("not within multilinecomment");
+	return false;
   }
   
   /**
